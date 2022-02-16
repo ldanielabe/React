@@ -5,26 +5,29 @@ interface Props{
 
 }
 
+interface CounterState{
+  counter: number;
+  click: number;
+}
+
 export const CounterBy = ({initialValue=10}: Props) => {
 
-    const [counterState, setCounterState] = useState({
+    const [ {counter, click}, setCounterState] = useState<CounterState>({
       counter:initialValue,
-      clicks:0,
+      click:0,
     });
 
-    const {counter, clicks}= counterState;
-
     const handleClick=(initialValue:number)=>{
-        setCounterState(prev=>({
-          counter: prev.counter+initialValue,
-          clicks: prev.clicks+1
+        setCounterState(({counter, click})=>({
+          counter: counter+initialValue,
+          click: click+1
         }))
     }
 
   return (
   <>
     <h1>CounterBy: {counter}</h1>
-    <h1>Clicks: {clicks}</h1>
+    <h1>Clicks: {click}</h1>
     <br/>
     <button className="btn btn-outline-primary" onClick={()=>handleClick(1)}>+1</button>
     <button className="btn btn-outline-primary" onClick={()=>handleClick(5)}>+5</button>

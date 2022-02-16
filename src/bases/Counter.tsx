@@ -15,6 +15,7 @@ export const Counter = ({initialValue=0}: Props) => {
 
   return (
   <>
+    <br/>
     Counter: {counter}
     <br/>
     <button className="btn btn-outline-primary" onClick={handleClick}>+1</button>
